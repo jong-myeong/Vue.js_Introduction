@@ -2,7 +2,7 @@
 ![Vue js 입문](https://user-images.githubusercontent.com/52479435/91760353-302a5780-ec0e-11ea-9442-0ca62e6c3516.jpg)
   
 ### 목차  
-1. Vue.js란?
+1. Vue.js란? :white_check_mark:
 2. 데이터 표시
 3. 속성을 지정할 때
 4. 유저 입력을 연결할 때
