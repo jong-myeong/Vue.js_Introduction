@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>modeltest1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <h2>입력한 문자열을 표시하는 예제</h2>
+    <div id="app">
+        <input v-model="myName" palceholder="이름">
+        <p>나는 {{ myName }}입니다.</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+               myName: ''
+            }
+        })
+    </script>
+</body>

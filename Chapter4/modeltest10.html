@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>modeltest10</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <h2>다 쓴 후 입력하는 예제</h2>
+    <div id="app">
+        <input v-model.lazy="myText">
+        <p>입력 후 표시 「{{ myText }}」</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                myText: ''
+            }
+        })
+    </script>
+</body>
+

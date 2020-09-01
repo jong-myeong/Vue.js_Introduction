@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>modeltest12</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <style>
+        body {
+            margin-left: 50px;
+        }
+        #app>input {
+            padding: 6px 12px;
+            border-radius: 6px;
+            color: #495057;
+            border: 2px solid #ced4da;
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <h2>입력폼 활용</h2>
+    <div id="app">
+        <p>이름 : <input v-model="myName"></p>
+        <p>좋아하는 색은 :</p>
+        <label><input type="radio" value="red" v-model="favColor">빨강</label><br>
+        <label><input type="radio" value="green" v-model="favColor">녹색</label><br>
+        <label><input type="radio" value="blue" v-model="favColor">파랑색</label><br>
+        <label><input type="radio" value="yellow" v-model="favColor">노란색</label><br>
+        <label><input type="radio" value="gray" v-model="favColor">회색</label><br>
+        <p v-bind:style="{color:favColor}">내 이름은 {{ myName }}이고 좋아하는 색깔은 {{favColor}} 입니다.</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                myName: '',
+                favColor: ''
+            }
+        })
+    </script>
+</body>
+

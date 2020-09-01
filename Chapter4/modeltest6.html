@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>modeltest6</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <h2>선택한 라디오 버튼을 표시하는 예제</h2>
+    <div id="app">
+        <label><input type="radio" value="red" v-model="picked">적</label><br>
+        <label><input type="radio" value="green" v-model="picked">녹</label><br>
+        <label><input type="radio" value="blue" v-model="picked">청</label><br>
+        {{ picked }} 이 선택됨
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                picked: 'red'
+            }
+        })
+    </script>
+</body>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>modeltest2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <h2>입력한 문장과 문자수를 표시하는 예제</h2>
+    <div id="app">
+        <textarea v-model="myText"></textarea>
+        <p>문장은, 「{{ myText }}」</p>
+        <p>글자수는 {{ myText.lenght}} 자 입니다.</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+               myText: '오늘 날씨 좋습니다.'
+            }
+        })
+    </script>
+</body>
