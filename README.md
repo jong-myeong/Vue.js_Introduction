@@ -4,7 +4,7 @@
 ### 목차  
 1. Vue.js란? :white_check_mark:
 2. 데이터 표시 :white_check_mark:
-3. 속성을 지정할 때
+3. 속성을 지정할 때 :white_check_mark:
 4. 유저 입력을 연결할 때
 5. 유저 조작과 연동
 6. 조건과 반복의 사용
