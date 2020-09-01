@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chap5 Practice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <style>
+        .btn {
+            margin-top: 20px;
+        }
+    </style>
+
+    <h2>간단한 계산기</h2>
+    <div id="app">
+        <input v-model.number="num1">
+        <input v-model.number="num2">
+        <div class="btn">
+            <button @click="add">덧셈계산</button>
+            <button @click="sub">뺄셈계산</button>
+            <button @click="mul">곱셈계산</button>
+            <button @click="div">나눗셈계산</button>
+        </div>
+        <p>결과는 {{ result }} 입니다.</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                num1: 0,
+                num2: 0,
+                result: 0
+            },
+            methods: {
+                add: function() {
+                    this.result = this.num1 + this.num2; 
+                },
+                sub: function() {
+                    this.result = this.num1 - this.num2;
+                },
+                mul: function() {
+                    this.result = this.num1 * this.num2;
+                },
+                div: function() {
+                    this.result = this.num1 / this.num2;
+                }
+            }
+        })
+    </script>
+</body>
