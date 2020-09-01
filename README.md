@@ -7,7 +7,7 @@
 3. 속성을 지정할 때 :white_check_mark:
 4. 유저 입력을 연결할 때 :white_check_mark:
 5. 유저 조작과 연동 :white_check_mark:
-6. 조건과 반복의 사용
+6. 조건과 반복의 사용 :white_check_mark:
 7. Google Charts와 연동
 8. 데이터의 변화 감지
 9. Markdown 에디터 만들기
