@@ -9,7 +9,7 @@
 5. 유저 조작과 연동 :white_check_mark:
 6. 조건과 반복의 사용 :white_check_mark:
 7. Google Charts와 연동 :white_check_mark:
-8. 데이터의 변화 감지
+8. 데이터의 변화 감지 :white_check_mark:
 9. Markdown 에디터 만들기
 10. 애니메이션
 11. ToDo 리스트 만들기

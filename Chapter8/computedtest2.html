@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>computedtest2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <h2>단가와 개수를 입력하면 세금포함 금액을 계산하는 예제</h2>
+    <div id="app">
+        <input v-model.number="price" type="number">원 x
+        <input v-model.number="count" type="number">개
+        <table>
+            <tr>
+                <td>합계</td>
+                <td>{{sum}} 원</td>
+            </tr>
+            <tr>
+                <td>세금포함</td>
+                <td>{{taxIncluded}} 원</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                price: 100,
+                count: 1
+            },
+            computed: {
+                // price가 변하면 소비세 포함 금액이 변한다.
+                sum: function() {
+                    return this.price * this.count;
+                },
+                // 합계 금액이 변하면 세금포함 금액을 계산한다.
+                taxIncluded: function() {
+                    return this.sum * 1.08;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

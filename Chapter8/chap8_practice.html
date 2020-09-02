@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Chap8 practice</title>
+		<link rel="stylesheet" href="style.css" >
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	</head>
+	
+	<body>
+		<h2>제한 시간 내에 문자 입력하기</h2>
+		<div id="app">
+			<p>금지문자(,로 나누어 복수입력가능) <input :disabled="isDisable" v-model="forbiddenWord"></p>
+			<p>제한시간을 입력하세요 (초) <input :disabled="isDisable" v-model="setTime">
+			<button :disabled="isDisable" v-on:click="start">시작</button></p>
+			<p>남은시간 {{ limitTime }}초<br>
+			<textarea :disabled="!isDisable" v-model="inputText"></textarea>
+			<p v-if="result">{{ wordCount }} 개의 문자를 입력하였습니다.</p>
+			<p v-if="result">{{ forbiddenWordCount }} 개의 금지문자를 입력하였습니다.</p>
+			<p v-if="result">벌점 : {{ resultScore }} (금지문자 1개당 10점)</p>
+		</div>
+
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					forbiddenWord: "바보",
+					setTime: 0,
+					limitTime : 0,
+					isDisable : false,
+					result : false,
+					inputText : "",
+					forbiddenWordCount : 0,
+				},
+				methods: {
+					start: function() {
+                        this.inputText = "",
+						this.isDisable = true;
+						this.limitTime = this.setTime;
+						this.timerObj = setInterval(()=> { this.limitTime-- }, 1000)
+					}
+				},
+				computed : {
+					resultScore: function() {
+						return this.forbiddenWordCount * 10;
+					}
+				},
+				watch: {
+					// 남은 시간 감시
+					limitTime: function() {
+						// 0초가 되면 alert을 띄우고 타이머를 멈춘다
+						if (this.limitTime <= 0) {
+							alert("제한시간 입니다.");
+							clearInterval(this.timerObj);
+							this.isDisable = false;
+							this.result = true;
+							this.wordCount = this.inputText.length;
+						}
+					},
+					// 입력한 문자열을 감시
+					inputText: function(){
+						var forbiddenWordArray = this.forbiddenWord.split(",");
+
+						for(var i = 0 ; i < forbiddenWordArray.length ; i++) {
+							var forbiddenWordIdx = this.inputText.indexOf(forbiddenWordArray[i]);
+							if (forbiddenWordIdx >= 0) {
+								alert(this.forbiddenWord + "는 입력할 수 없습니다.");
+								// 입력문자에서 금지 문자 삭제
+								this.inputText = this.inputText.substr(0,forbiddenWordIdx);
+								this.limitTime = this.limitTime + 10;
+								this.forbiddenWordCount++;
+							}
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

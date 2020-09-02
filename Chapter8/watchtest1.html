@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>watchtest1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <h2>금액을 입력하면 소비세가 포함된 금액을 계산하는 예제</h2>
+    <div id="app">
+        <p>금지문자는 「{{ forbiddenText }}」</p>
+        <textarea v-model="inputText"></textarea>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                forbiddenText: '금지어',
+                inputText: '오늘은 날씨가 좋습니다.'
+            },
+            watch: {
+                // 입력된 문자열 감지
+                inputText: function() {
+                    var pos = this.inputText.indexOf(this.forbiddenText);
+                    if (pos >= 0) {
+                        alert(this.forbiddenText + "는 입력할 수 없습니다.");
+                        // 입력문자에서 금지문자를 삭제
+                        this.inputText = this.inputText.substr(0, pos);
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
