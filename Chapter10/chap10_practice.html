@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>transtest2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <style>
+        /* 나타나고 있을 때와 사라질 때 0.5초 */
+        .v-enter-active,
+        .v-leave-active {
+            transition: 0.5s;
+        }
+
+        /* 나타나기 전의 상태와 사라진 상태는 투명도가 0, 오른쪽으로 50 이동 */
+        .v-enter,
+        .v-leave-to {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        /* 이동 transition에 걸리는 시간 */
+        .v-move {
+            transition: 2s;
+        }
+    </style>
+
+    <h2>애니메이션이 들억나 숫자 배열 조작과 구구단 출력</h2>
+    <div id="app">
+        <transition-group>
+            <li v-for="(item, index) in dataArray" v-bind:key="item">{{item}}
+                <button v-on:click="modifyNum(index)">변경</button>
+                <button v-on:click="deleteNum(index)">삭제</button>
+            </li>
+        </transition-group>
+        <br>
+        <button v-on:click="addNumber()">추가</button>
+        <button v-on:click="sortData()">소트</button>
+        <button v-on:click="showMultipleTable()">구구단 보이기</button>
+
+        <transition>
+            <ul v-if="show">
+                <li v-for="item in dataArray">
+                    <p v-for="item2 in 9">{{item}} x {{item2}} = {{item*item2}}</p>
+                </li>
+            </ul>
+        </transition>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                dataArray: [2, 3, 4, 5, 6, 7, 8, 9],
+                show: false
+            },
+            methods: {
+                modifyNum: function (index) {
+                    var changedNum = this.dataArray[index] + 100;
+
+                    while (true) {
+                        if (this.dataArray.indexOf(changedNum) == -1) {
+                            break;
+                        } else {
+                            changedNum++;
+                        }
+                    };
+                    this.dataArray.splice(index, 1, changedNum);
+                },
+
+                deleteNum: function (index) {
+                    this.dataArray.splice(index, 1);
+                },
+
+                addNumber: function () {
+                    this.dataArray.push(this.dataArray[this.dataArray.length - 1] + 1);
+                },
+
+                sortData: function () {
+                    this.dataArray = this.dataArray.filter(function (item, idx, array) {
+                        return array.indexOf(item) === idx;
+                    });
+
+                    this.dataArray.sort(function (a, b) {
+                        return (a < b ? -1 : 1);
+                    });
+                },
+
+                showMultipleTable: function() {
+                    this.show = true;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

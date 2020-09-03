@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>transtest2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <style>
+        /* 나타나고 있을 때와 사라질 때 0.5초 */
+        .v-enter-active,
+        .v-leave-active {
+            transition: 0.5s;
+        }
+
+        /* 나타나기 전의 상태와 사라진 상태는 투명도가 0, 오른쪽으로 50 이동 */
+        .v-enter,
+        .v-leave-to {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        /* 이동 transition에 걸리는 시간 */
+        .v-move {
+            transition: 3s;
+        }
+    </style>
+
+    <h2>리스트의 순서가 이동하면서 변하는 애니메이션 예제</h2>
+    <div id="app">
+        <transition-group>
+            <li v-for="item in dataArray" v-bind:key="item">{{item}}</li>
+        </transition-group>
+        <button v-on:click="sortData">Sort</button>
+        <button v-on:click="shuffleData">Shuffle</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                dataArray: ['one', 'two', 'three', 'four', 'five']
+            },
+            methods: {
+                sortData: function() {
+                    this.dataArray.sort(function(a,b) {
+                        if (a < b) {
+                            return -1;
+                        };
+                        if (a > b) {
+                            return 1;
+                        }
+                        return 0;
+                    });
+                },
+                shuffleData: function() {
+                    var tempArray = [];
+                    var len = this.dataArray.length;
+                    for (var i = len; len > 0; len--) {
+                        var r = Math.floor(Math.random() * len);
+                        tempArray.push(this.dataArray[r]);
+                        this.dataArray.splice(r, 1);
+                    }
+                    this.dataArray = tempArray;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
