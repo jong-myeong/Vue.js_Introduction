@@ -13,6 +13,6 @@
 9. Markdown 에디터 만들기 :white_check_mark:
 10. 애니메이션 :white_check_mark:
 11. ToDo 리스트 만들기 :white_check_mark:
-12. 컴포넌트로 정리하기
+12. 컴포넌트로 정리하기 :white_check_mark:
 13. json 데이터 다루기
 14. 간단한 게시판 만들어보기
