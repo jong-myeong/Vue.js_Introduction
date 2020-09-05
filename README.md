@@ -15,4 +15,4 @@
 11. ToDo 리스트 만들기 :white_check_mark:
 12. 컴포넌트로 정리하기 :white_check_mark:
 13. JSON 데이터 다루기 :white_check_mark:
-14. 간단한 게시판 만들어보기
+14. 간단한 게시판 만들어보기 :white_check_mark:
